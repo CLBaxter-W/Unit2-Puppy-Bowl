@@ -4,12 +4,79 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Puppy Bowl Team Room 4</title>
     <link rel="stylesheet" href="styles.css" />
-    <title>PuppyBowl</title>
+    <script defer src="./index.js"></script>
   </head>
   <body>
-    <form id="new-player-form"></form>
+    <h1>Puppy Bowl</h1>
+    <div>
+      <form id="new-player-form">
+        <label for="playerId"> Player Id: </label><br />
+        <input type="text" id="playerId" name="id" style="width: 40vw" />
+        <br />
+
+        <label for="playerName"> Player Name: </label><br />
+        <input type="text" id="playerName" name="name" style="width: 40vw" />
+        <br />
+
+        <label for="playerBreed"> Player Breed: </label><br />
+        <input type="text" id="playerBreed" name="breed" style="width: 40vw" />
+        <br />
+
+        <label for="playerStatus"> Player Status: </label><br />
+        <select id="playerStatus" name="status" style="width: 40vw">
+          <option value="bench" selected>Bench</option>
+          <option value="field">Field</option>
+        </select>
+        <br />
+
+        <label for="playerImage"> Image</label><br />
+        <input type="text" id="playerImage" name="image" style="width: 40vw" />
+        <br />
+
+        <label for="playerCreatedAt">First Created:</label><br />
+        <input
+          text=""
+          id="playereatedAt"
+          name="createdAt"
+          style="width: 40vw"
+        />
+        <br />
+
+        <label for="playerUpdatedAt">Last Updated:</label><br />
+        <input
+          text=""
+          id="playerUpdatedAt"
+          name="updatedAt"
+          style="width: 40vw"
+        />
+        <br />
+
+        <label for="playerTeamId">Player Team Id</label><br />
+        <input
+          type="text"
+          id="playerTeamId"
+          name="teamId"
+          style="width: 40vw"
+        />
+        <br />
+
+        <label for="playerTeamId"> Player Status: </label><br />
+        <select id="playerTeamId" name="teamId" style="width: 40vw">
+          <option value="noTeam" selected>Free Agent</option>
+          <option value="ruff">Ruff</option>
+          <option value="fluff">Fluff</option>
+        </select>
+        <br />
+
+        <br />
+        <button>Add Player</button>
+        <br />
+      </form>
+    </div>
+    <ul id="playerList"></ul>
+
     <main></main>
-    <script src="./script.js"></script>
   </body>
 </html>

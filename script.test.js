@@ -28,6 +28,22 @@ describe("fetchAllPlayers", () => {
 });
 
 // TODO: Tests for `fetchSinglePlayer`
+describe("fetchSinglePlayer", () => {
+  // Make the API call once before all the tests run
+  let player;
+  beforeAll(async () => {
+    player = await fetchSinglePlayer();
+  });
+
+  test("returns an object", async () => {
+    expect(typeof player === Object);
+  });
+
+  test("returns player with ", () => {
+    expect(player).toHaveProperty("name");
+    expect(player).toHaveProperty("id");
+  });
+});
 
 // TODO: Tests for `addNewPlayer`
 
