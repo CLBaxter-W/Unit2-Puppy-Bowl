@@ -3,16 +3,34 @@
 const cohortName = "2405-ftb-et-web-ft";
 const API_URL = `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}`;
 
+const players = "players";
+const API_URL_PLAYERS = `${API_URL}/${players}`;
+
+const teams = "teams";
+const API_URL_TEAMS = `${API_URL}/${teams}`;
+
+const playersListMain = document.querySelector("#mainDisplay");
+
+const state = {
+  puppies: [],
+  teams: [],
+};
 /**
  * Fetches all players from the API.
  * @returns {Object[]} the array of player objects
  */
 const fetchAllPlayers = async () => {
+  // TO DO some nice documentation
+  console.log("**fetchAllPlayers() **");
   try {
-    // TODO
+    const response = await fetch(API_URL_PLAYERS);
+    const json = await response.json();
+    state.puppies = json.data;
   } catch (err) {
     console.error("Uh oh, trouble fetching players!", err);
   }
+
+  return state.puppies;
 };
 
 /**
@@ -21,11 +39,18 @@ const fetchAllPlayers = async () => {
  * @returns {Object} the player object
  */
 const fetchSinglePlayer = async (playerId) => {
+  // TO DO some nice documentation
+  console.log(`**fetchSinglePlayer(${playerId}) **`);
+
   try {
-    // TODO
+    const response = await fetch(`${API_URL_PLAYERS}/${playerId}`);
+    const json = await response.json();
+    state.puppies.push(json.data);
   } catch (err) {
     console.error(`Oh no, trouble fetching player #${playerId}!`, err);
   }
+
+  return state.puppies[length - 1];
 };
 
 /**
@@ -76,7 +101,33 @@ const removePlayer = async (playerId) => {
  * @param {Object[]} playerList - an array of player objects
  */
 const renderAllPlayers = (playerList) => {
-  // TODO
+  // TODO nice documentation
+
+  if (state.puppies.length > 0) {
+    playersListMain.innerHTML = "<h1> No Players to List </h1>";
+    return;
+  } else {
+    const divContainer = document.createElement("div");
+    const ul = document.createElement("ul");
+    ul.data = "Players List";
+    divContainer.appendChild(ul);
+
+    const playerListBrief = playerList.map((player) => {
+      const li = document.createElement("li");
+
+      li.innerHTML = `
+      <h2>${player.name}</h2>
+      <span>${player.id} <span/><br>
+      <span>${player.image}</span><br>
+      <button onclick=renderSinglePlayer(${player.id})>See Details</button><br>
+      <button onclick=removePlayer(${player.id})>Delete Player - choose wisely</button><br>
+    `;
+      return li;
+    }); // TODO verify this is correct
+
+    partyList.replaceChildren(...partyCards);
+    state.puppies = playerList;
+  }
 };
 
 /**
@@ -118,6 +169,8 @@ const init = async () => {
 
   renderNewPlayerForm();
 };
+
+init();
 
 // This script will be run using Node when testing, so here we're doing a quick
 // check to see if we're in Node or the browser, and exporting the functions
