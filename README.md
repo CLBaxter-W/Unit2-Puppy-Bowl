@@ -43,11 +43,10 @@ For Puppy:
 - Add to Team
 - Remove from Team
 - View individually. - rendered with a card element
+- View list - small version of ingo
 
 For Team:
 
-- Add
-- Delete
 - Add Puppy to team
 - Remove Puppy from Team
 - View Team
@@ -59,6 +58,7 @@ Visually/CSS :
 - Player cards are styled and easy to use
 - Team display is styled and easy to use
 - Style basic elements for consistent display in css
+- Add and remove without refresh?
 
 JavaScript:
 
